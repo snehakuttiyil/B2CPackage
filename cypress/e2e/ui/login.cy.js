@@ -20,6 +20,7 @@ describe('Supplier Login Tests', () => {
   });
 
   it('TC02 - should reject an incorrect password and show validation error', () => {
+
     cy.fixture('supplierLogin').then((data) => {
       loginPage.login(
         data.incorrectPassword.email,
