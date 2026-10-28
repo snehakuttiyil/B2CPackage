@@ -19,7 +19,7 @@ describe('Supplier Login Tests', () => {
     });
   });
 
-  it('TC02 - should reject an incorrect password', () => {
+  it('TC02 - should reject an incorrect password and show validation error', () => {
     cy.fixture('supplierLogin').then((data) => {
       loginPage.login(
         data.incorrectPassword.email,
@@ -31,7 +31,7 @@ describe('Supplier Login Tests', () => {
     });
   });
 
-  it('TC03 - should validate an empty email', () => {
+  it('TC03 - should validate an empty email with appropriate errror message', () => {
     cy.fixture('supplierLogin').then((data) => {
       loginPage.login(
         data.emptyEmail.email,
