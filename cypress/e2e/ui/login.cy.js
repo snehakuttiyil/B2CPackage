@@ -19,7 +19,7 @@ describe('Supplier Login Tests', () => {
     });
   });
 
-  it('TC02 - should reject an invalid username', () => {
+  it('TC02 - should reject an invalid username and display an error validation', () => {
     cy.fixture('supplierLogin').then((data) => {
       loginPage.login(
         data.invalidUser.email,
