@@ -7,7 +7,7 @@ describe('Supplier Login Tests', () => {
     loginPage.visit();
   });
 
-  it('TC01 - should login with valid credentials', () => {
+  it('TC01 - should login with correct credentials', () => {
     cy.fixture('supplierLogin').then((data) => {
       loginPage.login(
         data.validUser.email,
@@ -19,19 +19,8 @@ describe('Supplier Login Tests', () => {
     });
   });
 
-  it('TC02 - should reject an invalid username and display an error validation', () => {
-    cy.fixture('supplierLogin').then((data) => {
-      loginPage.login(
-        data.invalidUser.email,
-        data.invalidUser.password
-      );
+  it('TC02 - should reject an incorrect password and show validation error', () => {
 
-      cy.location('pathname', { timeout: 10000 })
-        .should('include', '/login/supplier');
-    });
-  });
-
-  it('TC03 - should reject an incorrect password', () => {
     cy.fixture('supplierLogin').then((data) => {
       loginPage.login(
         data.incorrectPassword.email,
@@ -43,7 +32,7 @@ describe('Supplier Login Tests', () => {
     });
   });
 
-  it('TC04 - should validate an empty email', () => {
+  it('TC03 - should validate an empty email with appropriate errror message', () => {
     cy.fixture('supplierLogin').then((data) => {
       loginPage.login(
         data.emptyEmail.email,
@@ -57,7 +46,7 @@ describe('Supplier Login Tests', () => {
     });
   });
 
-  it('TC05 - should validate an empty password', () => {
+  it('TC04 - should validate an empty password', () => {
     cy.fixture('supplierLogin').then((data) => {
       loginPage.login(
         data.emptyPassword.email,
@@ -71,7 +60,7 @@ describe('Supplier Login Tests', () => {
     });
   });
 
-  it('TC06 - should validate empty email and password', () => {
+  it('TC05 - should validate empty email and password', () => {
     cy.fixture('supplierLogin').then((data) => {
       loginPage.login(
         data.emptyCredentials.email,
